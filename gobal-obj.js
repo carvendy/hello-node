@@ -36,3 +36,14 @@ for(var i = 0; i < 10;i++){
      console.log('退出码',code);
  });
  console.log('程序执行结束');
+
+ //
+process.stdout.write('Hello \n');
+
+process.argv.forEach(function(val,index,array) {
+    console.log(index+':'+val);
+}, this);
+
+console.log(process.execPath);
+console.log(process.platform);
+
