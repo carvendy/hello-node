@@ -16,3 +16,4 @@ var utf8Str = 'my string';
 var bufUtf8 = new Buffer(utf8Str);
 var base64String = bufUtf8.toString('base64');
 console.log(base64String);
+
