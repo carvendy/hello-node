@@ -18,3 +18,22 @@ function receiveData3(data1){
 readerSteam.addListener("data",receiveData);
 //readerSteam.on("data",receiveData2); //异常后，3就不执行了
 readerSteam.on("data",receiveData3);
+
+
+var util = require('util');
+var events = require('events').EventEmitter;
+var MyClass = function(){
+    //原型链
+    util.inherits(MyClass, events);
+}
+
+MyClass.prototype.someMethod = function (){
+    this.emit("custom event","argument 1","argument 2");
+}
+
+var myClazz = new MyClass();
+myClazz.on('custom event',function(str1,str2){
+    console.log("one:%s,two:%s",str1,str2);
+});
+
+myClazz.someMethod();
