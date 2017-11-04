@@ -47,7 +47,7 @@ fs.stat("./path.js",function(err,stats){
 
 
 function openAndWrite(writeBuffer, callback){
-    fs.open('./my_file', 'a', function opened(err,fd){
+    fs.open('./my_file.txt', 'a', function opened(err,fd){
         if(err){return callback(err);}
         function notifyError(err){
             fs.close(fd, function(){
@@ -57,9 +57,21 @@ function openAndWrite(writeBuffer, callback){
         var bufferOffset = 0,
             bufferLength = writeBuffer.length,
             filePosition = null;
-        fs.write(fs,writeBuffer , bufferOffset, bufferLength, filePosition,
+        fs.write(fd,writeBuffer , bufferOffset, bufferLength, filePosition,
             function wrote(err, written){
                 if(err){return notifyError(err);}
+                fs.close(fd, function (){
+                    callback(err);
+                });
             } );
     });
 }
+
+openAndWrite(new Buffer('write  to system'),
+    function done(err){
+        if(err){
+            console.log("error while opening and writing",err);
+            return ;
+        }
+        console.log('All done with no errors');
+    });
