@@ -1,5 +1,6 @@
 process.stdin.resume();
 process.stdin.on('data',function(data){
+    //  输入流
     var number;
     try {
         number = parseInt(data.toString(),10);
@@ -9,4 +10,5 @@ process.stdin.on('data',function(data){
     } catch (error) {
         process.stderr.write(err.message + '\n');
     }
+
 });

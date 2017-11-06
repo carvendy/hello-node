@@ -1,13 +1,5 @@
-hello world
+1
+my
+file
 1
 2
-3
-4
-5
-6
-7
-8
-9
-0
-11
-writing this stringwrite  to system
